@@ -1,0 +1,41 @@
+body{
+    background-color: #EAE8F8;
+    font-family: 'Lato', sans-serif;
+}
+.header{
+    background-color: #EAE8F8;
+    color: #55379D;
+    margin-bottom: 15px;
+}
+#title {
+    margin: 0;
+}
+.tabs a{
+    text-decoration: none;
+    background-color: #EAE8F8;
+    color: #4A598C;
+    margin-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom-color: #4A598C;
+    border-bottom: 1px solid;
+}
+#active{
+    background-color: white;
+    border-bottom: 0px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-left: 1px solid;
+    border-top-color: #4A598C;
+}
+.reviews{
+    background-color: white;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.pros{
+    color: limegreen;
+}
+.cons{
+    color: red;
+}
