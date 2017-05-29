@@ -10,7 +10,7 @@
       "http://*/*",
       "https://*/*"
     ],
-    "js": ["js/jquery-3.2.1.js", "js/sidepanel.js"]
+    "js": ["js/jquery-3.2.1.js", "js/sidepanel.js", "js/bubble.js"]
   }],
   "browser_action": {
     "default_icon": "icon.png"
@@ -18,9 +18,10 @@
   "background": {
     "scripts": ["js/background.js"]
   },
+
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/"
   ],
-  "web_accessible_resources": ["popup.html","css/style.css"]
+  "web_accessible_resources": ["popup.html","css/style.css","hover.html","css/speech-bubbles.css"]
 }
