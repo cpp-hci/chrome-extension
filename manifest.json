@@ -10,7 +10,8 @@
       "http://*/*",
       "https://*/*"
     ],
-    "js": ["js/jquery-3.2.1.js", "js/sidepanel.js"]
+    "js": ["js/jquery-3.2.1.js", "js/sidepanel.js"],
+    "all_frames": true
   }],
   "browser_action": {
     "default_icon": "icon.png"
