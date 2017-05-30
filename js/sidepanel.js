@@ -96,11 +96,11 @@ function setIframeContents(name) {
 }
 
 function generateKoofersUrl(name) {
-    return "http://ec2-52-53-153-54.us-west-1.compute.amazonaws.com/api/koofers/professor?school=California%20State%20Polytechnic%20University,%20Pomona&name=" + encodeURIComponent(name);
+    return "https://0177ebc8.ngrok.io/api/koofers/professor?school=California%20State%20Polytechnic%20University,%20Pomona&name=" + encodeURIComponent(name);
 }
 
 function generateRmpUrl(name) {
-    return "http://ec2-52-53-153-54.us-west-1.compute.amazonaws.com/api/rmp/professor?school=California%20State%20Polytechnic%20University,%20Pomona&name=" + encodeURIComponent(name);
+    return "https://0177ebc8.ngrok.io/api/rmp/professor?school=California%20State%20Polytechnic%20University,%20Pomona&name=" + encodeURIComponent(name);
 }
 
 function failToDefault(promise, defaultValue) {
