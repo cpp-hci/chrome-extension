@@ -6,7 +6,7 @@ document.body.appendChild(bubbleDOM);
 
 // Lets listen to mouseup DOM events.
 document.addEventListener('mouseup', function (e) {
-  var selection = window.getSelection().toString();
+  var selection = getSelectionText();
   if (selection.length > 0) {
     renderBubble(e.clientX, e.clientY, selection);
   }
@@ -23,4 +23,16 @@ function renderBubble(mouseX, mouseY, selection) {
   bubbleDOM.style.top = mouseY + 'px';
   bubbleDOM.style.left = mouseX + 'px';
   bubbleDOM.style.visibility = 'visible';
+}
+
+function getSelectionText() {
+    var text = "";
+    var span = $(this).closest("tr").find("span");
+    console.log(span);
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
 }

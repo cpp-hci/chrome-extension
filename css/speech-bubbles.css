@@ -1,25 +1,3 @@
-/* ------------------------------------------
-PURE CSS SPEECH BUBBLES
-by Nicolas Gallagher
-- http://nicolasgallagher.com/pure-css-speech-bubbles/
-
-http://nicolasgallagher.com
-http://twitter.com/necolas
-
-Created: 02 March 2010
-Version: 1.2 (03 March 2011)
-
-Dual licensed under MIT and GNU GPLv2 Nicolas Gallagher
------------------------------------------- */
-
-/* NOTE: Some declarations use longhand notation so that it can be clearly
-explained what specific properties or values do and what their relationship
-is to other properties or values in creating the effect */
-
-/* ============================================================================================================================
-== GENERAL STYLES
-** ============================================================================================================================ */
-
 body {
   padding:0;
   margin:0;
@@ -147,9 +125,10 @@ blockquote p {
 
 .selection_bubble {
   visibility: hidden;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 2147483647;
   background:-webkit-gradient(linear, left top, left bottom, from(#2e88c4), to(#075698));
 }
 
@@ -293,4 +272,3 @@ blockquote p {
   border-width:9px 0 9px 21px;
   border-color:transparent #fff;
 }
-
