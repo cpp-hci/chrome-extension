@@ -2,6 +2,9 @@
     adding #hciprojectframe to all the selectors ensures they only
     apply inside the sidebar instead of messing with everything on the page
 */
+#hciprojectframe {
+    height: 100%;
+}
 #hciprojectframe .container {
     background-color: #EAE8F8;
     font-family: 'Lato', sans-serif;
@@ -26,7 +29,7 @@
     border-bottom-color: #4A598C;
     border-bottom: 1px solid;
 }
-#hciprojectframe .active{
+#hciprojectframe .tabs .active{
     background-color: white;
     border-bottom: 0px;
     border-top: 1px solid;
@@ -34,10 +37,16 @@
     border-left: 1px solid;
     border-top-color: #4A598C;
 }
-#hciprojectframe .reviews{
+#hciprojectframe #reviews {
+    height: 100%;
     background-color: white;
     padding-top: 20px;
     padding-left: 10px;
+    overflow-y: scroll;
+}
+
+#hciprojectframe .review {
+    margin: 15px;
 }
 
 #hciprojectframe .reviewTab {

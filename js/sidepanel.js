@@ -55,12 +55,23 @@ function setIframeContents(name) {
     var onProfessorResults = function(data) {
         // make array of html strings for koofers reviews
         var koofersReviews = [];
+        for(var i=0; i<data.koofers.ratings.length; ++i) {
+            koofersReviews.push(
+                '<div class="review">' + data.koofers.ratings[i].reviewText + '</div>'
+            );
+        }
         // make array of html strings for rmp reviews
         var rmpReviews = [];
+        for(var i=0; i<data.rmp.ratings.length; ++i) {
+            rmpReviews.push(
+                '<div class="review">' + data.rmp.ratings[i].ratingText + '</div>'
+            );
+        }
         // combine into one html string, stick in page
+        var divider = "<hr />";
         $("#hciprojectframe #reviews").html(
-            '<div class="reviewTab active" id="koofersTab">' + "koofers data" + koofersReviews.join('') + '</div>' +
-            '<div class="reviewTab" id="rmpTab">' + "rmp data" + rmpReviews.join('') + '</div>'
+            '<div class="reviewTab active" id="koofersTab">' + koofersReviews.join(divider) + '</div>' +
+            '<div class="reviewTab" id="rmpTab">' + rmpReviews.join(divider) + '</div>'
         );
         $("#hciprojectframe #title").html(name);
     };
@@ -80,7 +91,7 @@ function generateRmpUrl(name) {
         "combinedRating": number,
         "rmp": {
             "overallQuality": number,
-            "levelOfDifficult": number,
+            "levelOfDifficulty": number,
             "wouldTakeAgain": boolean,
             "ratings": [
                 {
