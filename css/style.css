@@ -1,16 +1,22 @@
-body{
+/*
+    adding #hciprojectframe to all the selectors ensures they only
+    apply inside the sidebar instead of messing with everything on the page
+*/
+#hciprojectframe .container {
     background-color: #EAE8F8;
     font-family: 'Lato', sans-serif;
+    padding: 10px;
+    height: 100%;
 }
-.header{
+#hciprojectframe .header{
     background-color: #EAE8F8;
     color: #55379D;
     margin-bottom: 15px;
 }
-#title {
+#hciprojectframe #title {
     margin: 0;
 }
-.tabs a{
+#hciprojectframe .tabs a{
     text-decoration: none;
     background-color: #EAE8F8;
     color: #4A598C;
@@ -20,7 +26,7 @@ body{
     border-bottom-color: #4A598C;
     border-bottom: 1px solid;
 }
-#active{
+#hciprojectframe .active{
     background-color: white;
     border-bottom: 0px;
     border-top: 1px solid;
@@ -28,14 +34,21 @@ body{
     border-left: 1px solid;
     border-top-color: #4A598C;
 }
-.reviews{
+#hciprojectframe .reviews{
     background-color: white;
     padding-top: 20px;
     padding-left: 10px;
 }
-.pros{
+
+#hciprojectframe .reviewTab {
+    display: none;
+}
+#hciprojectframe .reviewTab.active {
+    display: initial !important; /* halp */
+}
+#hciprojectframe .pros{
     color: limegreen;
 }
-.cons{
+#hciprojectframe .cons{
     color: red;
 }

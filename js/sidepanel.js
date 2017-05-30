@@ -2,26 +2,77 @@ chrome.runtime.onMessage.addListener(function(msg, sender){
     if(msg == "toggle"){
         toggle();
     }
-})
+});
 
-var iframe = document.createElement('iframe'); 
-iframe.style.background = "blue";
-iframe.style.height = "100%";
-iframe.style.width = "0px";
-iframe.style.position = "fixed";
-iframe.style.top = "0px";
-iframe.style.right = "0px";
-iframe.style.zIndex = "100000";
-iframe.src = chrome.extension.getURL("popup.html")
+function openKoofersTab() {
+    $("#koofersTabHead").addClass('active');
+    $("#koofersTab").addClass('active');
+    $("#rmpTabHead").removeClass('active');
+    $("#rmpTab").removeClass('active');
+}
 
-document.body.appendChild(iframe);
+function openRmpTab() {
+    $("#koofersTabHead").removeClass('active');
+    $("#koofersTab").removeClass('active');
+    $("#rmpTabHead").addClass('active');
+    $("#rmpTab").addClass('active');
+}
+
+var sidebar = document.createElement('div'); 
+sidebar.style.background = "blue";
+sidebar.style.height = "100%";
+sidebar.style.width = "0px";
+sidebar.style.position = "fixed";
+sidebar.style.top = "0px";
+sidebar.style.right = "0px";
+sidebar.style.zIndex = "100000";
+sidebar.id = "hciprojectframe";
+// uses ajax to load the html. not ideal.
+$(sidebar).load(chrome.extension.getURL("popup.html"), function() {
+    // after html is loaded, set event listeners
+    document.getElementById("koofersTabHead").addEventListener('click', openKoofersTab);
+    document.getElementById("rmpTabHead").addEventListener('click', openRmpTab);
+
+    //$(sidebar).on('load', function() {setIframeContents("no matter");});
+    setIframeContents("no matter");
+}); 
+
+document.body.appendChild(sidebar);
 
 function toggle (){
-    if(iframe.style.width == "0px"){
-        iframe.style.width = "25%";
+    if(sidebar.style.width == "0px"){
+        sidebar.style.width = "25%";
     } else {
-        iframe.style.width = "0px";
+        sidebar.style.width = "0px";
     }
+}
+
+/* Given a CPP professor name, set the contents of the sidebar with their reviews */
+function setIframeContents(name) {
+    var onError = function(e) {
+        alert('woops ' + e);
+    };
+    var onProfessorResults = function(data) {
+        // make array of html strings for koofers reviews
+        var koofersReviews = [];
+        // make array of html strings for rmp reviews
+        var rmpReviews = [];
+        // combine into one html string, stick in page
+        $("#hciprojectframe #reviews").html(
+            '<div class="reviewTab active" id="koofersTab">' + "koofers data" + koofersReviews.join('') + '</div>' +
+            '<div class="reviewTab" id="rmpTab">' + "rmp data" + rmpReviews.join('') + '</div>'
+        );
+        $("#hciprojectframe #title").html(name);
+    };
+    getProfessorRatings(name, onProfessorResults, onError);
+}
+
+function generateKoofersUrl(name) {
+    return "http://ec2-52-53-153-54.us-west-1.compute.amazonaws.com/api/koofers/professor?school=California%20State%20Polytechnic%20University,%20Pomona&name=" + encodeURIComponent(name);
+}
+
+function generateRmpUrl(name) {
+    return "http://ec2-52-53-153-54.us-west-1.compute.amazonaws.com/api/rmp/professor?school=California%20State%20Polytechnic%20University,%20Pomona&name=" + encodeURIComponent(name);
 }
 
 /* get overall ratings, reviews, from both sites. format below

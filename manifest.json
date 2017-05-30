@@ -10,7 +10,8 @@
       "http://*/*",
       "https://*/*"
     ],
-    "js": ["js/jquery-3.2.1.js", "js/sidepanel.js"]
+    "js": ["js/jquery-3.2.1.js", "js/sidepanel.js"],
+    "css": ["css/style.css"]
   }],
   "browser_action": {
     "default_icon": "icon.png"
@@ -20,7 +21,8 @@
   },
   "permissions": [
     "activeTab",
-    "https://ajax.googleapis.com/"
+    "https://ajax.googleapis.com/",
+    "http://ec2-52-53-153-54.us-west-1.compute.amazonaws.com/"
   ],
   "web_accessible_resources": ["popup.html","css/style.css"]
 }
